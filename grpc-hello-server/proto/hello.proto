@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package hello;
+
+option go_package = "./pb";
+
+service HelloService {
+    rpc Hello(HelloRequest) returns (HelloResponse) {}
+    rpc HelloClientStream(stream HelloClientStreamRequest) returns (HelloClientStreamResponse) {}
+    rpc HelloServerStream(HelloServerStreamRequest) returns (stream HelloServerStreamResponse) {}
+    rpc HelloBidirectional(stream HelloBidirectionalRequest) returns (stream HelloBidirectionalResponse) {}
+}
+
+message HelloRequest {
+    string name = 1;
+}
+message HelloResponse {
+    string hello = 1;
+}
+
+message HelloClientStreamRequest {
+    string name = 1;
+}
+message HelloClientStreamResponse {
+    repeated string hello_list = 1;
+}
+
+message HelloServerStreamRequest {
+    string name = 1;
+}
+message HelloServerStreamResponse {
+    string hello = 1; // return all hello history
+}
+
+message HelloBidirectionalRequest {
+    string name = 1;
+}
+message HelloBidirectionalResponse {
+    string hello = 1;
+}
