@@ -1,5 +1,5 @@
-# Local test
+# Run locally
 - $ go run . [-port <port>]
 
-# How to run
+# Run on google cloud
 - $ gcloud run deploy
